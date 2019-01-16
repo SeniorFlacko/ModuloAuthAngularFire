@@ -9,7 +9,10 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
+  errorMessage: string;
 
+  showError: boolean;
+  
   constructor(private authService: AuthenticationService,
     private userService: UserService) { }
 
@@ -19,8 +22,16 @@ export class SignUpComponent implements OnInit {
   onSignup(signupFormData): void {
     this.authService.signup(signupFormData.value.email, signupFormData.value.password).then((userInfo) => {
         // Register the new user
-        const user: User = new User(signupFormData.value.email,
-            signupFormData.value.name, signupFormData.value.mobile, userInfo.uid, 0, '');
+        console.log(userInfo);
+        
+        const user: User = {
+          email: signupFormData.value.email,
+          name: signupFormData.value.name, 
+          mobile:signupFormData.value.mobile,
+          uid: userInfo.user.uid,
+          image: '',  
+          friendcount: 0
+        }
         this.writeNewUser(user);
     }).catch((error) => {
         // this.showError = true;
@@ -30,6 +41,7 @@ export class SignUpComponent implements OnInit {
   }
 
   private writeNewUser(user: User): void {
+    console.log(user);
     this.userService.addUser(user);
   }
 

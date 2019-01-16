@@ -9,6 +9,6 @@ export class AuthenticationService {
   constructor(private angularFireAuth: AngularFireAuth) { }
 
   public signup(email: string, password: string): Promise<any>{
-    return this.angularFireAuth.auth.createUserWithEmailAndPassword(email,password);
+    return this.angularFireAuth.auth.createUserAndRetrieveDataWithEmailAndPassword(email,password);
   }
 }

@@ -6,16 +6,18 @@ import { AuthenticationService } from './AuthenticationServices/authentication.s
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { PasswordEqualValidator } from './Directives/password-equal-validators.directive';
 import { FormsModule } from '@angular/forms';
+import { ErrorAlertComponent } from '../shared/error-alert/error-alert.component';
 
 @NgModule({
   declarations: [
     SignUpComponent, 
     PasswordEqualValidator,
+    ErrorAlertComponent
   ],
   imports: [
     CommonModule,
     AuthenticationRoutingModule,
-    FormsModule
+    FormsModule,
   ],
   providers:[
     AuthenticationService
