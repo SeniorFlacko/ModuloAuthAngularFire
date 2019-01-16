@@ -8,6 +8,7 @@ import { PasswordEqualValidator } from './Directives/password-equal-validators.d
 import { FormsModule } from '@angular/forms';
 import { ErrorAlertComponent } from '../shared/error-alert/error-alert.component';
 import { LoginComponent } from './login/login.component';
+import { UserService } from './UserServices/user.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
   ],
   providers:[
-    AuthenticationService
+    AuthenticationService,
+    UserService
   ]
 })
 export class AuthenticationModule { }
