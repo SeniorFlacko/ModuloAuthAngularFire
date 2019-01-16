@@ -34,8 +34,8 @@ export class SignUpComponent implements OnInit {
         }
         this.writeNewUser(user);
     }).catch((error) => {
-        // this.showError = true;
-        // this.errorMessage = error.message;
+        this.showError = true;
+        this.errorMessage = error.message;
         console.error(error);
     });
   }

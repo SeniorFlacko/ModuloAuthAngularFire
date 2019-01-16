@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthenticationService } from './authentication/AuthenticationServices/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'myamigos';
+  authenticationService: AuthenticationService;
+  constructor(private authService: AuthenticationService, private router: Router){
+    this.authenticationService = authService;
+  }
+
+  onLogout(): void {
+    this.authService.signout().then(() => {
+      this.router.navigateByUrl('app-friends-login');
+      console.log('Bye...!');
+    });
+  }
 }

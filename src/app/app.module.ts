@@ -9,10 +9,14 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule, AngularFireAuth } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { AuthenticationModule } from './authentication/authentication.module';
+import { AboutComponent } from './about/about.component';
+import { PageNotFoundComponent } from './notfound/page-not-found.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AboutComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
