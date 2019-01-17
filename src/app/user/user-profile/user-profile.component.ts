@@ -13,7 +13,7 @@ import { EditType } from 'src/app/edit-dialog/edit-detail';
 })
 export class UserProfileComponent implements OnInit {
 
-  profileImage: any = '../../../assets/images/person_edit.png';
+  profileImage: any = 'http://lorempixel.com/200/200/business/';
 
   user: User;
 
