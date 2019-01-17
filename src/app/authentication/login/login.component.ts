@@ -25,6 +25,11 @@ export class LoginComponent {
         this.angularFireAuth.auth.onAuthStateChanged(user => {
             if (user) {
                 this.getUserInfo(user.uid);
+
+                //Firebase session lifecycle: 
+                //If User clears browsing history
+                //If User changes the password
+                //If User sign out
                 this.navigateToUserProfile();
             }
         });
