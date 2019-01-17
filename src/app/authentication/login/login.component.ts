@@ -25,12 +25,6 @@ export class LoginComponent {
         this.angularFireAuth.auth.onAuthStateChanged(user => {
             if (user) {
                 this.getUserInfo(user.uid);
-
-                //Firebase session lifecycle: 
-                //If User clears browsing history
-                //If User changes the password
-                //If User sign out
-                this.navigateToUserProfile();
             }
         });
     }
@@ -65,6 +59,12 @@ export class LoginComponent {
     private getUserInfo(uid: string) {
         this.userService.getUser(uid).subscribe(snapshot => {
             this.user = snapshot;
+            this.userService.saveUser(this.user);
+            //Firebase session lifecycle: 
+            //If User clears browsing history
+            //If User changes the password
+            //If User sign out
+            this.navigateToUserProfile();
         });
     }
 }

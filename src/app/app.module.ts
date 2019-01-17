@@ -11,6 +11,7 @@ import { environment } from '../environments/environment';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { AboutComponent } from './about/about.component';
 import { PageNotFoundComponent } from './notfound/page-not-found.component';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -20,12 +21,13 @@ import { PageNotFoundComponent } from './notfound/page-not-found.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase), // imports firebase/app needed for everything
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
-    AuthenticationModule
+    AuthenticationModule,
+    UserModule,
+    AppRoutingModule,
   ],
   providers: [
     AngularFireAuth,
