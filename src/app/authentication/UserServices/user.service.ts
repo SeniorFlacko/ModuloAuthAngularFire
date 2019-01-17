@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { User } from 'src/app/models/user';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  
+  private subject: BehaviorSubject<User> = new BehaviorSubject(null);
   
   userCollection: AngularFirestoreCollection;
   userDoc: AngularFirestoreDocument<User>;
@@ -29,4 +31,28 @@ export class UserService {
 
     return item;
   }
+
+  public saveUser(user: User) {
+    this.subject.next(user);
+}
+
+public getSavedUser(): BehaviorSubject<User> {
+    return this.subject;
+}
+
+
+public updateEmail(user: User, newEmail: string): void {
+    // this.fireDb.object(`${USERS_CHILD}/'${user.uid}`).update({email: newEmail});
+    this.saveUser(user);
+}
+
+public updateMobile(user: User, mobile: string): void {
+    // this.fireDb.object(`${USERS_CHILD}/'${user.uid}`).update({mobile: mobile});
+    this.saveUser(user);
+}
+
+public updateName(user: User, name: string): void {
+    // this.fireDb.object(`${USERS_CHILD}/'${user.uid}`).update({name: name});
+    this.saveUser(user);
+}
 }
