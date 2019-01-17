@@ -43,16 +43,22 @@ public getSavedUser(): BehaviorSubject<User> {
 
 public updateEmail(user: User, newEmail: string): void {
     // this.fireDb.object(`${USERS_CHILD}/'${user.uid}`).update({email: newEmail});
+    this.userDoc = this.userCollection.doc(user.uid);
+    this.userDoc.update({email: newEmail});
     this.saveUser(user);
 }
 
 public updateMobile(user: User, mobile: string): void {
     // this.fireDb.object(`${USERS_CHILD}/'${user.uid}`).update({mobile: mobile});
+    this.userDoc = this.userCollection.doc(user.uid);
+    this.userDoc.update({mobile: mobile});
     this.saveUser(user);
 }
 
 public updateName(user: User, name: string): void {
     // this.fireDb.object(`${USERS_CHILD}/'${user.uid}`).update({name: name});
+    this.userDoc = this.userCollection.doc(user.uid);
+    this.userDoc.update({name: name});
     this.saveUser(user);
 }
 }
