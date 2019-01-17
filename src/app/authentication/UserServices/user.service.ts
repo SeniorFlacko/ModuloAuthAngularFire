@@ -34,7 +34,7 @@ export class UserService {
 
   public saveUser(user: User) {
     this.subject.next(user);
-}
+  }
 
 public getSavedUser(): BehaviorSubject<User> {
     return this.subject;
