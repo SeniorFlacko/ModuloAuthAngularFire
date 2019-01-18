@@ -30,7 +30,7 @@ export class LoginComponent {
     }
 
     navigateToUserProfile(): any {
-        this.router.navigateByUrl('/app-friends-about');
+        this.router.navigateByUrl('/app-friends-userprofile');
     }
     
     onLogin(loginFormData): void {
@@ -39,7 +39,7 @@ export class LoginComponent {
             console.log(user);
             const uid: string = user.uid;
             // this.getUserInfo(uid);
-            this.router.navigateByUrl('/app-friends-about');
+            this.router.navigateByUrl('/app-friends-userprofile');
             
         }).catch((error) => {
             this.errorMessage = error.message;

@@ -5,6 +5,7 @@ import { AuthenticationService } from 'src/app/authentication/AuthenticationServ
 import { UserService } from 'src/app/authentication/UserServices/user.service';
 import { Router } from '@angular/router';
 import { EditType } from 'src/app/edit-dialog/edit-detail';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user-profile',
@@ -16,6 +17,7 @@ export class UserProfileComponent implements OnInit {
   profileImage: any = 'http://lorempixel.com/200/200/business/';
 
   user: User;
+  userObservable: Observable<User>;
 
   @ViewChild(EditDialogComponent) editDialog: EditDialogComponent;
 
@@ -26,6 +28,7 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit() {
       this.user = this.userService.getSavedUser().getValue();
+      this.userObservable = this.userService.getSavedUser().asObservable();
   }
 
   onLogout(): void {

@@ -5,8 +5,9 @@ import { AboutComponent } from './about/about.component';
 import { PageNotFoundComponent } from './notfound/page-not-found.component';
 
 const routes: Routes = [
-  {path: 'app-friends-about', component: AboutComponent, pathMatch: 'full'},
-  {path: '**', redirectTo: 'app-friends-page-not-found'},
+  { path: 'app-friends-about', component: AboutComponent},
+  { path: 'app-friends-page-not-found', component: PageNotFoundComponent },
+  { path: '**', redirectTo: '/login'},
 ];
 
 @NgModule({
