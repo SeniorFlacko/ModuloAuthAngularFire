@@ -12,6 +12,9 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { AboutComponent } from './about/about.component';
 import { PageNotFoundComponent } from './notfound/page-not-found.component';
 import { UserModule } from './user/user.module';
+import { UserPageStore } from './services/user-page.store';
+import { UserFirestore } from './services/user.firestore';
+import { UsersService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,9 @@ import { UserModule } from './user/user.module';
   ],
   providers: [
     AngularFireAuth,
+    UserPageStore,
+    UserFirestore,
+    UsersService
     // AngularFireDatabase,
   ],
   bootstrap: [AppComponent]
