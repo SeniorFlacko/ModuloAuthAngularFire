@@ -68,7 +68,7 @@ export class SignUpComponent implements OnInit {
   }
 
   async createUser(signupFormData: NgForm, user:User){
-    await this.usersService.create({ ...user })
+    await this.usersService.create({ ...user }, user.uid)
     signupFormData.reset();
   }
 

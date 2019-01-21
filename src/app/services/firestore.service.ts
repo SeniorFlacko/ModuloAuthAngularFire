@@ -38,8 +38,8 @@ export abstract class FirestoreService<T> {
         );
     }
 
-    create(value: T) {
-        const id = this.firestore.createId();
+    create(value: T, uid?: string) {
+        const id = uid ? uid : this.firestore.createId();
         return this.collection.doc(id).set(Object.assign({}, { id }, value)).then(_ => {
             if (!environment.production) {
                 console.groupCollapsed(`Firestore Service [${this.basePath}] [create]`)

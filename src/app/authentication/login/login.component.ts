@@ -38,9 +38,18 @@ export class LoginComponent {
             // Login user
             console.log(user);
             const uid: string = user.uid;
-            // this.getUserInfo(uid);
-            this.router.navigateByUrl('/app-friends-userprofile');
-            
+            this.userService.getUser(uid).subscribe(snapshot => {
+                this.user = snapshot;
+                console.log(`El usuario existe en la base de datos... `, this.user);
+                
+                this.userService.saveUser(this.user);
+                //Firebase session lifecycle: 
+                //If User clears browsing history
+                //If User changes the password
+                //If User sign out
+                // this.navigateToUserProfile();
+                this.router.navigateByUrl('/app-friends-userprofile');
+            });
         }).catch((error) => {
             this.errorMessage = error.message;
             this.showError = true;
@@ -59,6 +68,7 @@ export class LoginComponent {
     private getUserInfo(uid: string) {
         this.userService.getUser(uid).subscribe(snapshot => {
             this.user = snapshot;
+            console.log(`El usuario existe en la base de datos... `, snapshot);
             this.userService.saveUser(this.user);
             //Firebase session lifecycle: 
             //If User clears browsing history

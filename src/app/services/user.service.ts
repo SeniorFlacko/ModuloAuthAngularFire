@@ -29,10 +29,10 @@ export class UsersService {
   }
 
 
-  create(user: User){
+  create(user: User, uid?: string){
     this.store.patch({loading:true, users: [], formStatus: 'Salvando...'}, "Creando Usuario");
 
-    return this.firestore.create(user)
+    return this.firestore.create(user,uid)
             .then(_ =>{
               this.store.patch({formStatus: 'Salvado!'}, "Usuario creado satisfactoriamente")
               setTimeout(() => this.store.patch({formStatus: ''},'Crear usuario reset FormStatus'), 2000);
